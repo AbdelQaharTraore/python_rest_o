@@ -1,0 +1,37 @@
+[
+    {
+        "nom": "resto1",
+        "position": {
+            "x": 1000,
+            "y": 2000
+        }
+    },
+    {
+        "nom": "resto2",
+        "position": {
+            "x": 5000,
+            "y": 12000
+        }
+    },
+    {
+        "nom": "resto3",
+        "position": {
+            "x": 500,
+            "y": 400
+        }
+    },
+    {
+        "nom": "resto4",
+        "position": {
+            "x": 60000,
+            "y": 400
+        }
+    },
+    {
+        "nom": "resto5",
+        "position": {
+            "x": 5000,
+            "y": 5000
+        }
+    }
+]
