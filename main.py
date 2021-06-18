@@ -19,20 +19,17 @@ class Position(BaseModel):
 
 class Restaurant():
     nom: str
-    x: int
-    y: int
-    # position: Position
+    position: Position
 
-    def __init__(self, nom, x, y):
+    def __init__(self, nom, position):
         self.nom = nom
-        self.x = x
-        self.y = y
+        self.position = position
 
 
 def calculer_distance(position: Position, restaurant: Restaurant):
     distance = math.sqrt(
-        (position.x - restaurant.x) ** 2
-        + (position.y - restaurant.y) ** 2
+        (position.x - restaurant.position["x"]) ** 2
+        + (position.y - restaurant.position["y"]) ** 2
     )
     return distance
 
@@ -47,7 +44,8 @@ def near_me(position: Position, distance_max: int = Body(...)):
             resto_x = restaurant["position"]["x"]
             resto_y = restaurant["position"]["y"]
 
-            resto = Restaurant(resto_nom, resto_x, resto_y)
+            pos = {"x": resto_x, "y": resto_y}
+            resto = Restaurant(resto_nom, pos)
 
             if calculer_distance(position, resto) < distance_max:
                 resultats_resto.append(resto)
@@ -64,7 +62,8 @@ def far_away(position: Position, distance_min: int = Body(...)):
             resto_x = restaurant["position"]["x"]
             resto_y = restaurant["position"]["y"]
 
-            resto = Restaurant(resto_nom, resto_x, resto_y)
+            pos = {"x": resto_x, "y": resto_y}
+            resto = Restaurant(resto_nom, pos)
 
             if calculer_distance(position, resto) > distance_min:
                 resultats_resto.append(resto)
