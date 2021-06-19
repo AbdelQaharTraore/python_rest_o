@@ -14,7 +14,7 @@ restaurants = json.load(file_restaurants)
 
 @app.get("/")
 def read_root():
-    return {"msg": "FastAPI"}
+    return {"msg": "FastAPI Restaurant"}
 
 
 @app.post("/resto/near_me")
