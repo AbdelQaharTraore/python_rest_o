@@ -22,12 +22,10 @@ def near_me(position: Position, distance_max: int = Body(...)):
     resultats_resto = []
 
     for restaurant in restaurants:
-        resto_nom = restaurant["nom"]
-        resto_x = restaurant["position"]["x"]
-        resto_y = restaurant["position"]["y"]
-
-        pos = {"x": resto_x, "y": resto_y}
-        resto = Restaurant(resto_nom, pos)
+        resto = Restaurant(restaurant["nom"], {
+                           "x": restaurant["position"]["x"],
+                           "y": restaurant["position"]["y"]
+                           })
 
         if calculer_distance(position, resto) < distance_max:
             resultats_resto.append(resto)
@@ -40,12 +38,10 @@ def far_away(position: Position, distance_min: int = Body(...)):
     resultats_resto = []
 
     for restaurant in restaurants:
-        resto_nom = restaurant["nom"]
-        resto_x = restaurant["position"]["x"]
-        resto_y = restaurant["position"]["y"]
-
-        pos = {"x": resto_x, "y": resto_y}
-        resto = Restaurant(resto_nom, pos)
+        resto = Restaurant(restaurant["nom"], {
+                           "x": restaurant["position"]["x"],
+                           "y": restaurant["position"]["y"]
+                           })
 
         if calculer_distance(position, resto) > distance_min:
             resultats_resto.append(resto)
